@@ -1,0 +1,16 @@
+apiVersion: skaffold/v2beta29
+kind: Config
+metadata:
+  name: python-skaffold
+build:
+  artifacts:
+  - image: docker.local/testpackage
+    docker:
+      dockerfile: dev/dev.Dockerfile
+    sync:
+      infer: 
+        - "src"
+deploy:
+  kubectl:
+    manifests:
+    - deployment/deployment.yaml
